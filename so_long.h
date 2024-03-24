@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:40:30 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/22 03:38:45 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/24 15:29:20 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+
+#define ESC     53
+#define W       13
+#define A	    0
+#define S	    1
+#define D	    2
+
 typedef struct s_dimo
 {
     void  *mlx;
@@ -42,6 +49,7 @@ typedef struct s_dimo
     int height;
     int width;
     char **map;
+    char **map_dup;
     int x;
     int y;
     int p;
@@ -50,7 +58,10 @@ typedef struct s_dimo
 }t_dimo;
 
 char  **ft_split_so_long(char *str, t_dimo *dimo ,char sep);
-
+void move_right(t_dimo *data);
+void move_down(t_dimo *data);
+void move_left(t_dimo *data);
+void move_up(t_dimo *data);
 
 
 #endif

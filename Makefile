@@ -6,7 +6,7 @@ FT_PRINTF_DIR = ./includes/ft_printf
 LIBFT_DIR = ./includes/LIBFT
 GET_NEXT_LINE= ./includes/get_next_line/get_next_line.c 
 
-SRC = so_long.c ft_split_so_long.c  ./includes/get_next_line/get_next_line.c  ./includes/get_next_line/get_next_line_utils.c
+SRC = so_long.c ft_split_so_long.c  ./includes/get_next_line/get_next_line.c  ./includes/get_next_line/get_next_line_utils.c moves.c
 
 MLX =  -lmlx -framework OpenGL -framework AppKit
 OBJ = $(SRC.c:o)

@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:36:49 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 04:06:33 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 07:14:38 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,79 +15,70 @@
 //  i = y
 //  j = x
 
-
-int map_carre(char *str, t_dimo *data)
+int	map_carre(char *str, t_dimo *data)
 {
-    ft_split_so_long(str, data, '\n');
-    data->c = 0;
-    data->p = 0;
-    data->e = 0;
-    valid_lenght(data);
-    check_map(data);
-    flood_fill(data, data->x, data->y);
-    check_valid_flood_fill(str,data);
-    return 0;
+	ft_split_so_long(str, data, '\n');
+	data->c = 0;
+	data->p = 0;
+	data->e = 0;
+	valid_lenght(data);
+	check_map(data);
+	flood_fill(data, data->x, data->y);
+	check_valid_flood_fill(str, data);
+	return (0);
 }
 
-void check_map_name(char **av)
+void	check_map_name(char **av)
 {
-    size_t i;
-    char *path = av[1];
-    i = ft_strlen(path);
-    if (path[i - 5] != '/' && i < 5)
-    {
-        printf("Error, Ivalid path in the map!!\n");
-        exit(0);
-    }
-    if (path[i - 5] == '/' || path[i - 1] != 'r' || path[i - 2] != 'e' || path[i - 3] != 'b' || path[i - 4] != '.' ||  path[i - 5] == '.')
-    {
-        printf("Error, Ivalid path in the map!!\n");
-        exit(0);
-    }
+	size_t	i;
+	char	*path;
+
+	path = av[1];
+	i = ft_strlen(path);
+	if (path[i - 5] != '/' && i < 5)
+		ft_exit_w_message("Error, Ivalid path in the map!!");
+	if (path[i - 5] == '/' || path[i - 1] != 'r' || path[i - 2] != 'e')
+		ft_exit_w_message("Error, Ivalid path in the map!!");
+	if (path[i - 3] != 'b' || path[i - 4] != '.' || path[i - 5] == '.')
+		ft_exit_w_message("Error, Ivalid path in the map!!");
 }
 
-
-int loop(t_dimo *data)
+int	loop(t_dimo *data)
 {
-    mlx_clear_window(data->mlx, data->win);
-    draw(data);
-    return 1;
-}
-void    close_window(t_dimo *data)
-{
-    mlx_destroy_window(data->mlx,data->win);
-    // free map
-    write(1,"the window closed by user \n",28);
-    exit(0);
+	mlx_clear_window(data->mlx, data->win);
+	initialize_mlx_vars(data);
+	return (1);
 }
 
-int main(int ac, char **av)
+void	close_window(t_dimo *data)
 {
-    t_dimo data;
+	mlx_destroy_window(data->mlx, data->win);
+	write(1, "the window closed by user \n", 28);
+	exit(0);
+}
 
-    if (ac != 2)
-    {
-        printf("Takes two arguments!!\n");
-        return 0;
-    }
-    check_map_name(av);
-    char *str = get_all_map_lines(av);
-    map_carre(str, &data);
-   
+int	main(int ac, char **av)
+{
+	t_dimo	data;
+	char	*str;
 
-
-    data.count_moves = 0;
-
-    data.mlx = mlx_init();
-    data.win = mlx_new_window(data.mlx,data.width * 32,data.height * 32,"so_long");
-    draw(&data);
-
-    mlx_hook(data.win, 2, 0, keys, &data);
-    mlx_hook(data.win, 17,0, (void *)close_window, &data);
-    mlx_loop_hook(data.mlx, loop, &data );
-    mlx_loop(data.mlx);
-    // mlx_destroy_display(data.mlx);
-    // free(data.mlx);
-    free(str);
-    return 0;
+	if (ac != 2)
+	{
+		printf("Takes two arguments!!\n");
+		return (0);
+	}
+	check_map_name(av);
+	str = get_all_map_lines(av);
+	map_carre(str, &data);
+	data.count_moves = 0;
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, data.width * 32, data.height * 32,
+			"so_long");
+	initialize_mlx_vars(&data);
+	mlx_hook(data.win, 2, 0, keys, &data);
+	mlx_hook(data.win, 17, 0, (void *)close_window, &data);
+	mlx_loop_hook(data.mlx, loop, &data);
+	mlx_loop(data.mlx);
+	free(str);
+	return (0);
 }

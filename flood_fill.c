@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:53:56 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 04:14:31 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 07:08:46 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	flood_fill(t_dimo *data, int j, int i)
 	{
 		data->map[i][j] = 'X';
 		flood_fill(data, j, i + 1);
-		flood_fill(data, j, i + 1);
+		flood_fill(data, j, i - 1);
 		flood_fill(data, j - 1, i);
 		flood_fill(data, j + 1, i);
 	}
@@ -31,22 +31,15 @@ void	check_valid_flood_fill(char *str, t_dimo *data)
 	int	j;
 
 	i = 0;
-	display_str(data);
-	while (data->map[i])
-	{
-		printf(YELLOW"%s\n"NC,data->map[i++]);
-	}
-	i = 0;
 	while (data->map[i])
 	{
 		j = 0;
 		while (data->map[i][j])
 		{
 			if (data->map[i][j] == 'C')
-				ft_exit_w_message("C NOT REACH!!", 2);
+				ft_exit_w_message("C NOT REACH!!");
 			if (data->map[i][j] == 'E')
-				ft_exit_w_message("E NOT REACH!!", 2);
-
+				ft_exit_w_message("E NOT REACH!!");
 			j++;
 		}
 		i++;

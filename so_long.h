@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:40:30 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 04:05:27 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 07:04:23 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_dimo
 
 char  **ft_split_so_long(char *str, t_dimo *dimo ,char sep);
 char	*get_all_map_lines(char **av);
-void	ft_exit_w_message(char *message ,int fd);
+void	ft_exit_w_message(char *message);
 void height_map(t_dimo *data);
 
 void move_right(t_dimo *data);
@@ -77,5 +77,5 @@ void check_valid_flood_fill(char *str,t_dimo *data);
 void count_collectibles(t_dimo *data);
 void draw(t_dimo *data);
 int keys(int keycode, t_dimo *data);
-void display_str(t_dimo *data);
+void initialize_mlx_vars(t_dimo *data);
 #endif

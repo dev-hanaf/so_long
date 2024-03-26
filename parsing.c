@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:05:55 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 04:04:56 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 06:59:23 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,12 @@ void	check_map(t_dimo *data)
 		{
 			if (str[0][j] != '1' || str[i][0] != '1' || str[i][data->width
 				- 1] != '1' || str[data->height - 1][j] != '1')
-				ft_exit_w_message("The map must be closed/surrounded by walls!!",
-						2);
+				ft_exit_w_message("The map must be closed/surrounded by walls");
 			only_pce01(data, i, j);
 			j++;
 		}
 		i++;
 	}
 	if (data->p != 1 || data->c < 1 || data->e != 1)
-		ft_exit_w_message("Error, PCE Problem!!", 2);
+		ft_exit_w_message("Error, PCE Problem!!");
 }

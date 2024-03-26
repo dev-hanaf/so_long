@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:08:46 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/24 15:46:09 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 02:10:24 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void move_right(t_dimo *data)
             {    
                 data->map[i][j] = '0';
                 data->map[i][j + 1] = 'P';
+                data->count_moves++;
+                ft_printf("moves = %d\n",data->count_moves);
                 return ;
             }
             j++;
@@ -49,6 +51,8 @@ void move_left(t_dimo *data)
             {    
                 data->map[i][j] = '0';
                 data->map[i][j - 1] = 'P';
+                data->count_moves++;
+                ft_printf("moves = %d\n",data->count_moves);
                 return ;
             }
             j++;
@@ -71,6 +75,8 @@ void move_up(t_dimo *data)
             {    
                 data->map[i][j] = '0';
                 data->map[i - 1][j] = 'P';
+                data->count_moves++;
+                ft_printf("moves = %d\n",data->count_moves);
                 return ;
             }
             j++;
@@ -93,6 +99,8 @@ void move_down(t_dimo *data)
             {    
                 data->map[i][j] = '0';
                 data->map[i + 1][j] = 'P';
+                data->count_moves++;
+                ft_printf("moves = %d\n",data->count_moves);
                 return ;
             }
             j++;

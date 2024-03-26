@@ -8,8 +8,7 @@ GET_NEXT_LINE= ./includes/get_next_line/get_next_line.c
 
 
 SRC = so_long.c ft_split_so_long.c  ./includes/get_next_line/get_next_line.c  ./includes/get_next_line/get_next_line_utils.c \
-		moves.c parsing.c utils.c flood_fill.c draw.c display_str.c
-
+		moves.c parsing.c utils.c flood_fill.c draw.c
 MLX =  -lmlx -framework OpenGL -framework AppKit
 OBJ = $(SRC.c:o)
 

@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:05:55 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 06:59:23 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/26 07:36:57 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,12 @@ char	*get_all_map_lines(char **av)
 	fd = open(path, O_RDONLY);
 	lines = NULL;
 	if (fd == -1)
-	{
-		printf("Error, fd == -1");
-		exit(0);
-	}
+		ft_exit_w_message("Error, fd == -1");
 	str = get_next_line(fd);
 	while ((str != NULL))
 	{
 		if (str[0] == '\n')
-		{
-			printf("Error, Invalid map!!");
-			exit(0);
-		}
+			ft_exit_w_message("Error, Invalid map!!");
 		lines = ft_strjoin(lines, str);
 		str = get_next_line(fd);
 	}
@@ -46,15 +40,12 @@ void	valid_lenght(t_dimo *data)
 	size_t	lenght;
 	int		i;
 
-	lenght = ft_strlen(*(data->map));
+	lenght = ft_strlen(data->map[0]);
 	i = 0;
 	while (data->map[i])
 	{
 		if (ft_strlen(data->map[i]) != lenght)
-		{
-			printf("Error, The map must be rectangular!!\n");
-			exit(0);
-		}
+			ft_exit_w_message("Error, The map must be rectangular!!");
 		i++;
 	}
 }
@@ -81,10 +72,7 @@ void	only_pce01(t_dimo *data, int i, int j)
 			data->e++;
 	}
 	if (!isok)
-	{
-		printf("Error, Impostor character!!\n");
-		exit(1);
-	}
+		ft_exit_w_message("Error, Impostor character!!");
 }
 
 void	check_map(t_dimo *data)

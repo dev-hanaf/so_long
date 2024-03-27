@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:51:38 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/24 10:56:05 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 17:44:15 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,6 @@ int	count_words(char *str, char sep)
 		}
 	}
 	return (count);
-}
-
-char	**free_str(char **str)
-{
-	while (*str)
-	{
-		free(*str);
-		str++;
-	}
-	free(str);
-	return (0);
 }
 
 void	init_var(int *i, int *index, int *end)

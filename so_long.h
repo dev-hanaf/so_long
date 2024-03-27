@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:40:30 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/27 17:07:47 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 19:53:00 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void		count_collectibles(t_dimo *data);
 void		draw(t_dimo *data);
 int			keys(int keycode, t_dimo *data);
 void		initialize_mlx_vars(t_dimo *data);
+char	**free_str(char **str);
 #endif

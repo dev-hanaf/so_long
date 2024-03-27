@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:08:46 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 07:09:25 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 19:58:17 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ void	move_right(t_dimo *data)
 		{
 			if (data->map[i][j] == 'P' && data->map[i][j + 1] == 'E'
 				&& data->c == 0)
-				exit(1);
+			{
+						free_str(data->map);
+		mlx_destroy_window(data->mlx, data->win);
+		system("leaks so_long");
+				exit(0);
+			}
 			if (data->map[i][j] == 'P' && data->map[i][j + 1] != 'E'
 				&& data->map[i][j + 1] != '1')
 			{
@@ -54,7 +59,12 @@ void	move_left(t_dimo *data)
 		{
 			if (data->map[i][j] == 'P' && data->map[i][j - 1] == 'E'
 				&& data->c == 0)
-				exit(1);
+			{
+						free_str(data->map);
+		mlx_destroy_window(data->mlx, data->win);
+		system("leaks so_long");
+				exit(0);
+			}
 			if (data->map[i][j] == 'P' && data->map[i][j - 1] != 'E'
 				&& data->map[i][j - 1] != '1')
 			{
@@ -83,7 +93,12 @@ void	move_up(t_dimo *data)
 		{
 			if (data->map[i][j] == 'P' && data->map[i - 1][j] == 'E'
 				&& data->c == 0)
-				exit(1);
+			{
+				free_str(data->map);
+				mlx_destroy_window(data->mlx, data->win);
+				system("leaks so_long");
+				exit(0);
+			}
 			if (data->map[i][j] == 'P' && data->map[i - 1][j] != 'E'
 				&& data->map[i - 1][j] != '1')
 			{
@@ -112,7 +127,12 @@ void	move_down(t_dimo *data)
 		{
 			if (data->map[i][j] == 'P' && data->map[i + 1][j] == 'E'
 				&& data->c == 0)
-				exit(1);
+			{
+						free_str(data->map);
+				mlx_destroy_window(data->mlx, data->win);
+				system("leaks so_long");
+				exit(0);
+			}
 			if (data->map[i][j] == 'P' && data->map[i + 1][j] != 'E'
 				&& data->map[i + 1][j] != '1')
 			{

@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 03:01:05 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 07:07:47 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 19:54:29 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ int	keys(int keycode, t_dimo *data)
 	count_collectibles(data);
 	if (keycode == ESC)
 	{
+		free_str(data->map);
 		mlx_destroy_window(data->mlx, data->win);
+		system("leaks so_long");
 		exit(0);
 	}
 	if (keycode == W)

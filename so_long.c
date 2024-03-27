@@ -6,14 +6,12 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:36:49 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 07:14:38 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 19:41:12 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//  i = y
-//  j = x
 
 int	map_carre(char *str, t_dimo *data)
 {
@@ -39,7 +37,7 @@ void	check_map_name(char **av)
 		ft_exit_w_message("Error, Ivalid path in the map!!");
 	if (path[i - 5] == '/' || path[i - 1] != 'r' || path[i - 2] != 'e')
 		ft_exit_w_message("Error, Ivalid path in the map!!");
-	if (path[i - 3] != 'b' || path[i - 4] != '.' || path[i - 5] == '.')
+	if (path[i - 3] != 'b' || path[i - 4] != '.')
 		ft_exit_w_message("Error, Ivalid path in the map!!");
 }
 
@@ -54,6 +52,7 @@ void	close_window(t_dimo *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	write(1, "the window closed by user \n", 28);
+	system("leaks so_long");
 	exit(0);
 }
 
@@ -80,5 +79,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(data.mlx, loop, &data);
 	mlx_loop(data.mlx);
 	free(str);
+	free_str(data.map);
 	return (0);
 }

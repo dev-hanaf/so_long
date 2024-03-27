@@ -1,4 +1,4 @@
-CC = cc -fsanitize=address -g3
+CC = cc 
 CFLAGS = -Wall -Wextra -Werror 
 AR = ar rcs
 

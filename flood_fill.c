@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:53:56 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 07:08:46 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 18:30:57 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	check_valid_flood_fill(char *str, t_dimo *data)
 		}
 		i++;
 	}
+	free_str(data->map);
 	ft_split_so_long(str, data, '\n');
 }

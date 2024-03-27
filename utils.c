@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 12:34:41 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 06:58:54 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 19:55:58 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,15 @@ void	height_map(t_dimo *data)
 	while (data->map[i])
 		i++;
 	data->height = i;
+}
+
+char	**free_str(char **str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	return (0);
 }

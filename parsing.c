@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:05:55 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/26 07:36:57 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/03/27 20:04:36 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ char	*get_all_map_lines(char **av)
 	while ((str != NULL))
 	{
 		if (str[0] == '\n')
+		{	free(str);
 			ft_exit_w_message("Error, Invalid map!!");
-		lines = ft_strjoin(lines, str);
+		}
+		lines = ft_strjoin_next_line(lines, str);
+		free(str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	return (lines);
 }
 

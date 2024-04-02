@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/04/01 20:46:05 by ahanaf           ###   ########.fr       */
+/*   Created: 2023/11/15 20:17:49 by ahanaf            #+#    #+#             */
+/*   Updated: 2023/11/27 18:05:34 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include "../libft/libft.h"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*tmp_ptr;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-
-char	*get_next_line(int fd);
-char	*get_remainder(int fd, char *remainder);
-char	*ft_get_line(char *remainder);
-char	*ft_new_remainder(char *remainder);
-
-#endif
+	tmp_ptr = (unsigned char *)s;
+	while (n > 0)
+	{
+		*(tmp_ptr++) = (unsigned char)c;
+		n--;
+	}
+	return (s);
+}

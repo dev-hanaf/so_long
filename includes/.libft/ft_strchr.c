@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/04/01 20:46:05 by ahanaf           ###   ########.fr       */
+/*   Created: 2023/11/16 23:51:31 by ahanaf            #+#    #+#             */
+/*   Updated: 2024/04/01 20:44:26 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include "../libft/libft.h"
+int	ft_strchr(char *s, int c)
+{
+	int	i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-
-char	*get_next_line(int fd);
-char	*get_remainder(int fd, char *remainder);
-char	*ft_get_line(char *remainder);
-char	*ft_new_remainder(char *remainder);
-
-#endif
+	i = 0;
+	if (!s)
+		return (0);
+	if (c == '\0')
+		return (1);
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return (1);
+		i++;
+	}
+	return (0);
+}

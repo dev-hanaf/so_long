@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/04/01 20:46:05 by ahanaf           ###   ########.fr       */
+/*   Created: 2023/12/27 13:36:50 by ahanaf            #+#    #+#             */
+/*   Updated: 2024/01/05 09:55:10 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include "../libft/libft.h"
+int	ft_putnbr_u(unsigned int n)
+{
+	int	count;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-
-char	*get_next_line(int fd);
-char	*get_remainder(int fd, char *remainder);
-char	*ft_get_line(char *remainder);
-char	*ft_new_remainder(char *remainder);
-
-#endif
+	count = 0;
+	if (n >= 10)
+	{
+		count += ft_putnbr_u(n / 10);
+		count += ft_putnbr_u(n % 10);
+	}
+	else
+		count += ft_putchar(n + '0');
+	return (count);
+}

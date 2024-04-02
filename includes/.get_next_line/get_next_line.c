@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:14 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/03/16 11:18:14 by ahanaf           ###   ########.fr       */
+/*   Updated: 2023/12/19 01:28:38 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_remainder(int fd, char *remainder)
 	if (!buff)
 		return (NULL);
 	rd_bytes = 1;
-	while (!ft_strchr_next_line(remainder, '\n') && rd_bytes != 0)
+	while (!ft_strchr(remainder, '\n') && rd_bytes != 0)
 	{
 		rd_bytes = read(fd, buff, BUFFER_SIZE);
 		if (rd_bytes == -1)
@@ -32,7 +32,7 @@ char	*get_remainder(int fd, char *remainder)
 			return (NULL);
 		}
 		buff[rd_bytes] = '\0';
-		remainder = ft_strjoin_next_line(remainder, buff);
+		remainder = ft_strjoin(remainder, buff);
 	}
 	free(buff);
 	return (remainder);

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/04/01 20:46:05 by ahanaf           ###   ########.fr       */
+/*   Created: 2023/12/24 17:51:59 by ahanaf            #+#    #+#             */
+/*   Updated: 2024/01/05 09:54:13 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include "../libft/libft.h"
+// end +1 to included the formats by example %
+// -+d in this case we add 1 to end to include d
+char	*ft_parser(const char *str, int start, int end)
+{
+	char	*prs;
+	int		i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-
-char	*get_next_line(int fd);
-char	*get_remainder(int fd, char *remainder);
-char	*ft_get_line(char *remainder);
-char	*ft_new_remainder(char *remainder);
-
-#endif
+	prs = (char *)malloc(sizeof(char) * ((end + 1) - start + 1));
+	if (!prs)
+		return (NULL);
+	i = 0;
+	while (i <= end - start)
+	{
+		prs[i] = str[start + i];
+		i++;
+	}
+	prs[i] = '\0';
+	return (prs);
+}

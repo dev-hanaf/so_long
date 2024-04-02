@@ -6,70 +6,15 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:58 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/03/16 11:19:11 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/01 20:44:48 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen_next_line(char *s)
-{
-	size_t	i;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
-int	ft_strchr_next_line(char *s, int c)
-{
-	int	i;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return (1);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_strjoin_next_line(char *remainder, char *buff)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	if (!remainder)
-	{
-		remainder = (char *)malloc(1 * sizeof(char));
-		remainder[0] = '\0';
-	}
-	if (!remainder || !buff)
-		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen_next_line(remainder)
-					+ ft_strlen_next_line(buff)) + 1));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	j = 0;
-	if (remainder)
-		while (remainder[++i] != '\0')
-			str[i] = remainder[i];
-	while (buff[j] != '\0')
-		str[i++] = buff[j++];
-	str[ft_strlen_next_line(remainder) + ft_strlen_next_line(buff)] = '\0';
-	free(remainder);
-	return (str);
-}
 
 char	*ft_get_line(char *remainder)
 {
@@ -113,8 +58,7 @@ char	*ft_new_remainder(char *remainder)
 		free(remainder);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen_next_line(remainder) - i
-				+ 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(remainder) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;

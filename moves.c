@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:08:46 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/27 19:58:17 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/01 23:47:00 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	move_right(t_dimo *data)
 			if (data->map[i][j] == 'P' && data->map[i][j + 1] == 'E'
 				&& data->c == 0)
 			{
+						data->count_moves++;
+		ft_printf("moves = %d\n", data->count_moves);
 						free_str(data->map);
 		mlx_destroy_window(data->mlx, data->win);
 		system("leaks so_long");
@@ -60,6 +62,8 @@ void	move_left(t_dimo *data)
 			if (data->map[i][j] == 'P' && data->map[i][j - 1] == 'E'
 				&& data->c == 0)
 			{
+										data->count_moves++;
+		ft_printf("moves = %d\n", data->count_moves);
 						free_str(data->map);
 		mlx_destroy_window(data->mlx, data->win);
 		system("leaks so_long");
@@ -94,6 +98,8 @@ void	move_up(t_dimo *data)
 			if (data->map[i][j] == 'P' && data->map[i - 1][j] == 'E'
 				&& data->c == 0)
 			{
+										data->count_moves++;
+		ft_printf("moves = %d\n", data->count_moves);
 				free_str(data->map);
 				mlx_destroy_window(data->mlx, data->win);
 				system("leaks so_long");
@@ -128,6 +134,8 @@ void	move_down(t_dimo *data)
 			if (data->map[i][j] == 'P' && data->map[i + 1][j] == 'E'
 				&& data->c == 0)
 			{
+										data->count_moves++;
+		ft_printf("moves = %d\n", data->count_moves);
 						free_str(data->map);
 				mlx_destroy_window(data->mlx, data->win);
 				system("leaks so_long");

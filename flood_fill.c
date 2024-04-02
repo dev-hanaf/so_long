@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:53:56 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/27 18:30:57 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/01 23:30:52 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	flood_fill(t_dimo *data, int j, int i)
 {
+	if (i < 0 || j < 0 || i > data->height || j > data->width)
+		return ;
+
+	if (data->map[i][j] == 'E')
+		data->map[i][j] = '1';
 	if (data->map[i][j] == 'P' || data->map[i][j] == '0'
 		|| data->map[i][j] == 'E' || data->map[i][j] == 'C')
 	{
@@ -25,7 +30,7 @@ void	flood_fill(t_dimo *data, int j, int i)
 	}
 }
 
-void	check_valid_flood_fill(char *str, t_dimo *data)
+void	check_valid_flood_fill(char **av ,t_dimo *data)
 {
 	int	i;
 	int	j;
@@ -45,5 +50,7 @@ void	check_valid_flood_fill(char *str, t_dimo *data)
 		i++;
 	}
 	free_str(data->map);
-	ft_split_so_long(str, data, '\n');
+	get_all_map_lines(av, data);
+	
+	// ft_split_so_long(data, '\n');
 }

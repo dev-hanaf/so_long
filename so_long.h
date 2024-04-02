@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:40:30 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/27 19:53:00 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/01 22:46:37 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ typedef struct s_dimo
 	void	*coll;
 }			t_dimo;
 
-char		**ft_split_so_long(char *str, t_dimo *dimo, char sep);
-char		*get_all_map_lines(char **av);
+// char		**ft_split_so_long(char *str, t_dimo *dimo, char sep);
+void 		get_all_map_lines(char **av, t_dimo *data);
 void		ft_exit_w_message(char *message);
 void		height_map(t_dimo *data);
-
 void		move_right(t_dimo *data);
 void		move_down(t_dimo *data);
 void		move_left(t_dimo *data);
@@ -69,10 +68,11 @@ void		valid_lenght(t_dimo *data);
 void		only_pce01(t_dimo *data, int i, int j);
 void		check_map(t_dimo *data);
 void		flood_fill(t_dimo *data, int j, int i);
-void		check_valid_flood_fill(char *str, t_dimo *data);
+void		check_valid_flood_fill(char **av, t_dimo *data);
 void		count_collectibles(t_dimo *data);
 void		draw(t_dimo *data);
 int			keys(int keycode, t_dimo *data);
 void		initialize_mlx_vars(t_dimo *data);
-char	**free_str(char **str);
+char		**free_str(char **str);
+
 #endif

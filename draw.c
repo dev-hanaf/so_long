@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 03:01:05 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/03/27 19:54:29 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/01 23:44:53 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,29 @@ void	count_collectibles(t_dimo *data)
 		i++;
 	}
 }
-
+void message_xpm(t_dimo *data)
+{
+	if (!data->player || !data->wall || !data->door || !data->coll)
+	{
+		mlx_destroy_window(data->mlx, data->win);
+		free(data->mlx);
+		free_str(data->map);
+		ft_exit_w_message("Error, Invalid xpm");
+	}
+}
 void	initialize_mlx_vars(t_dimo *data)
 {
-	data->wall = mlx_xpm_file_to_image(data->mlx, "./images/wall.xpm",
+	data->wall = mlx_xpm_file_to_image(data->mlx, "./textures/wall.xpm",
 			&data->width, &data->height);
 	data->player = mlx_xpm_file_to_image(data->mlx,
-			"./images/pac_open_right.xpm",
+			"./textures/pac_open_right.xpm",
 			&data->width,
 			&data->height);
-	data->door = mlx_xpm_file_to_image(data->mlx, "./images/portal.xpm",
+	data->door = mlx_xpm_file_to_image(data->mlx, "./textures/portal.xpm",
 			&data->width, &data->height);
-	data->coll = mlx_xpm_file_to_image(data->mlx, "./images/pacdot_food.xpm",
+	data->coll = mlx_xpm_file_to_image(data->mlx, "./textures/pacdot_food.xpm",
 			&data->width, &data->height);
+	message_xpm(data);
 	draw(data);
 }
 

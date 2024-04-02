@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/04/01 20:46:05 by ahanaf           ###   ########.fr       */
+/*   Created: 2023/11/15 16:29:55 by ahanaf            #+#    #+#             */
+/*   Updated: 2024/04/02 00:52:26 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include "../libft/libft.h"
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-char	*get_next_line(int fd);
-char	*get_remainder(int fd, char *remainder);
-char	*ft_get_line(char *remainder);
-char	*ft_new_remainder(char *remainder);
+size_t	ft_strlen_without_nl(const char *s)
+{
+	size_t	i;
 
-#endif
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	return (i);
+}

@@ -6,85 +6,73 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:05:55 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/01 23:58:02 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:50:03 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_str2(char **str)
+void	create_data_map(t_dimo *data)
 {
-	int i;
-	
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-	return ;
-}
+	int	j;
+	int	start;
+	int	end;
 
-void get_all_map_lines(char **av, t_dimo *data)
-{
-	char	*path;
-	int		fd;
-	char	*lines;
-	char	*str;
-	char	*tmp;
-	
-	size_t	lenght;
-	path = av[1];
-	fd = open(path, O_RDONLY);
-	lines = NULL;
-	if (fd == -1)
-		ft_exit_w_message("Error, fd == -1");
-	str = get_next_line(fd);
-	lenght = ft_strlen_without_nl(str);
-	if (!lenght)
-		ft_exit_w_message("ERROR, empty map");
-	int i = 0;
-	while ((str != NULL))
-	{
-		i++;
-		if (str[lenght - 1] == '\n')
-			tmp = ft_substr(str, 0, lenght -1);
-		else
-			tmp = ft_substr(str, 0, lenght);
-		printf(GREEN"%zu\n"NC,ft_strlen_without_nl(str));
-		lines = ft_strjoin(lines, tmp);
-		free(str);
-		free(tmp);
-		str = get_next_line(fd);
-		if (lenght != ft_strlen_without_nl(str) && str)
-			ft_exit_w_message("Error, The map must be rectangular!!");
-	}
-	printf(YELLOW"|%s|\n"NC,lines);
-	printf("i = > %d\n", i);
-	data->map = (char **)malloc(sizeof(char **) * i + 1);
+	data->map = (char **)malloc(sizeof(char **) * data->height + 1);
 	if (!data->map)
 		return ;
-	int j = 0;
-	int start = 0;
-	int end = (int)lenght ;
-	while (j < i)
+	j = 0;
+	start = 0;
+	end = data->width;
+	while (j < data->height)
 	{
-		data->map[j] = ft_substr(lines, start , end);
+		data->map[j] = ft_substr(data->lines, start, end);
 		if (!data->map[j])
 			return (free_str2(data->map));
-		start += lenght ;
+		start += data->width;
 		j++;
 	}
 	data->map[j] = 0;
-	free(str);
-	i = 0;
-	while(data->map[i])
-	{
-		printf("%s\n",data->map[i++]);
-	}
-	data->height = i;
-	data->width = lenght;
-	free(lines);
 }
 
+char	*substring_str(char *str, t_dimo *data)
+{
+	char	*tmp;
+
+	if (str[data->width - 1] == '\n')
+		tmp = ft_substr(str, 0, data->width - 1);
+	else
+		tmp = ft_substr(str, 0, data->width);
+	return (tmp);
+}
+
+void	get_all_map_lines(char **av, t_dimo *data)
+{
+	int		fd;
+	char	*str;
+	char	*tmp;
+
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		ft_exit_w_message("Error, fd == -1");
+	str = get_next_line(fd);
+	data->width = (int)ft_strlen_without_nl(str);
+	if (!data->width)
+		ft_exit_w_message("ERROR, empty map");
+	while ((str != NULL))
+	{
+		data->height++;
+		tmp = substring_str(str, data);
+		data->lines = ft_strjoin(data->lines, tmp);
+		free(str);
+		free(tmp);
+		str = get_next_line(fd);
+		if (data->width != (int)ft_strlen_without_nl(str) && str)
+			ft_exit_w_message("Error, The map must be rectangular!!");
+	}
+	create_data_map(data);
+	free(str);
+}
 
 void	only_pce01(t_dimo *data, int i, int j)
 {
@@ -118,24 +106,12 @@ void	check_map(t_dimo *data)
 	char	**str;
 
 	str = data->map;
-	int x = 0;
-	while(str[x])
-		printf(RED"%s\n"NC,str[x++]);
-	// height_map(data);
-	// data->width = (int)ft_strlen(*data->map);
-	printf(YELLOW"%d\n"NC,data->width);
-	printf(YELLOW"%d\n"NC,data->height);
-
 	i = 0;
 	while (str[i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			printf(CYAN"%c\n"NC,str[0][j]);
-			printf(CYAN"%c\n"NC,str[i][0]);
-			printf(CYAN"%c\n"NC,str[i][data->width - 1]);
-			printf(CYAN"%c\n"NC,str[data->height -1][j]);
 			if (str[0][j] != '1' || str[i][0] != '1' || str[i][data->width
 				- 1] != '1' || str[data->height - 1][j] != '1')
 				ft_exit_w_message("The map must be closed/surrounded by walls");

@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 09:40:30 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/01 22:46:37 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:50:24 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ typedef struct s_dimo
 	void	*wall;
 	void	*door;
 	void	*coll;
+	char	*lines;
 }			t_dimo;
 
-// char		**ft_split_so_long(char *str, t_dimo *dimo, char sep);
-void 		get_all_map_lines(char **av, t_dimo *data);
+void		free_str2(char **str);
+void		get_all_map_lines(char **av, t_dimo *data);
 void		ft_exit_w_message(char *message);
 void		height_map(t_dimo *data);
 void		move_right(t_dimo *data);

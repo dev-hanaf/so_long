@@ -12,10 +12,6 @@
 
 #include "get_next_line.h"
 
-
-
-
-
 char	*ft_get_line(char *remainder)
 {
 	int		i;

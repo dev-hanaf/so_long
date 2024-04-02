@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 03:01:05 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/01 23:44:53 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:45:12 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	count_collectibles(t_dimo *data)
 		i++;
 	}
 }
-void message_xpm(t_dimo *data)
+
+void	message_xpm(t_dimo *data)
 {
 	if (!data->player || !data->wall || !data->door || !data->coll)
 	{
@@ -41,6 +42,7 @@ void message_xpm(t_dimo *data)
 		ft_exit_w_message("Error, Invalid xpm");
 	}
 }
+
 void	initialize_mlx_vars(t_dimo *data)
 {
 	data->wall = mlx_xpm_file_to_image(data->mlx, "./textures/wall.xpm",
@@ -93,24 +95,15 @@ int	keys(int keycode, t_dimo *data)
 	{
 		free_str(data->map);
 		mlx_destroy_window(data->mlx, data->win);
-		system("leaks so_long");
 		exit(0);
 	}
 	if (keycode == W)
-	{
 		move_up(data);
-	}
 	if (keycode == A)
-	{
 		move_left(data);
-	}
 	if (keycode == S)
-	{
 		move_down(data);
-	}
 	if (keycode == D)
-	{
 		move_right(data);
-	}
 	return (1);
 }

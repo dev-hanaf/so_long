@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:53:56 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/02 00:23:59 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/03 20:05:08 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flood_fill(t_dimo *data, int j, int i)
 {
-	if (i < 0 || j < 0 || i > data->height || j > data->width)
+	if (i < 0 || j < 0 || i > data->height - 1 || j > data->width - 1)
 		return ;
 	if (data->map[i][j] == 'E')
 		data->map[i][j] = '1';

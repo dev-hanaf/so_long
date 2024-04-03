@@ -39,6 +39,8 @@ fclean: clean
 
 re: fclean all
 
+.SECONDARY : $(OBJ)
+
 header:
 	@echo "$(GREEN)"
 	@echo " ██░ ██  ▄▄▄       ███▄    █  ▄▄▄        █████▒"
@@ -55,4 +57,3 @@ header:
 	
 	@printf "$(YELLOW)ahanaf Sama!$(NC)\n"
 
-# .SECONDARY : $(OBJ)

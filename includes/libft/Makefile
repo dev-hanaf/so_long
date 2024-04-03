@@ -49,6 +49,8 @@ fclean:  clean
 
 re :fclean all 
 
+.SECONDARY : $(OBJ) $(OBJ_BNS)
+
 header:
 	@echo "$(RED)$(BOLD)"
 	@echo " ██░ ██  ▄▄▄       ███▄    █  ▄▄▄        █████▒"

@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:08:46 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/02 00:48:39 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/03 20:14:59 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	dispaly_moves_exit(t_dimo *data)
 	ft_printf("moves = %d\n", data->count_moves);
 	free_str(data->map);
 	mlx_destroy_window(data->mlx, data->win);
-	system("leaks so_long");
 	exit(0);
 }
 
@@ -27,8 +26,8 @@ void	move_right(t_dimo *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i])
+	i = -1;
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -41,13 +40,13 @@ void	move_right(t_dimo *data)
 			{
 				data->map[i][j] = '0';
 				data->map[i][j + 1] = 'P';
+				draw(data);
 				data->count_moves++;
 				ft_printf("moves = %d\n", data->count_moves);
 				return ;
 			}
 			j++;
 		}
-		i++;
 	}
 }
 
@@ -56,8 +55,8 @@ void	move_left(t_dimo *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i])
+	i = -1;
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -70,13 +69,13 @@ void	move_left(t_dimo *data)
 			{
 				data->map[i][j] = '0';
 				data->map[i][j - 1] = 'P';
+				draw(data);
 				data->count_moves++;
 				ft_printf("moves = %d\n", data->count_moves);
 				return ;
 			}
 			j++;
 		}
-		i++;
 	}
 }
 
@@ -85,8 +84,8 @@ void	move_up(t_dimo *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i])
+	i = -1;
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -99,13 +98,13 @@ void	move_up(t_dimo *data)
 			{
 				data->map[i][j] = '0';
 				data->map[i - 1][j] = 'P';
+				draw(data);
 				data->count_moves++;
 				ft_printf("moves = %d\n", data->count_moves);
 				return ;
 			}
 			j++;
 		}
-		i++;
 	}
 }
 
@@ -114,8 +113,8 @@ void	move_down(t_dimo *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i])
+	i = -1;
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -128,12 +127,12 @@ void	move_down(t_dimo *data)
 			{
 				data->map[i][j] = '0';
 				data->map[i + 1][j] = 'P';
+				draw(data);
 				data->count_moves++;
 				ft_printf("moves = %d\n", data->count_moves);
 				return ;
 			}
 			j++;
 		}
-		i++;
 	}
 }

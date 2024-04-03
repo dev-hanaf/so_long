@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 03:01:05 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/02 00:45:12 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/03 20:14:53 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	initialize_mlx_vars(t_dimo *data)
 	data->coll = mlx_xpm_file_to_image(data->mlx, "./textures/pacdot_food.xpm",
 			&data->width, &data->height);
 	message_xpm(data);
-	draw(data);
 }
 
 void	draw(t_dimo *data)
@@ -64,8 +63,9 @@ void	draw(t_dimo *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i])
+	i = -1;
+	mlx_clear_window(data->mlx, data->win);
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -84,7 +84,6 @@ void	draw(t_dimo *data)
 					* 32, i * 32);
 			j++;
 		}
-		i++;
 	}
 }
 

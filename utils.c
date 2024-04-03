@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 12:34:41 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/02 00:50:49 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/03 20:15:22 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_exit_w_message(char *message)
 {
 	ft_putstr_fd(message, 2);
 	ft_putchar_fd('\n', 2);
-	system("leaks so_long");
 	exit(1);
 }
 

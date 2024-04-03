@@ -6,7 +6,7 @@
 /*   By: ahanaf <ahanaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:05:55 by ahanaf            #+#    #+#             */
-/*   Updated: 2024/04/02 00:50:03 by ahanaf           ###   ########.fr       */
+/*   Updated: 2024/04/03 20:25:29 by ahanaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	get_all_map_lines(char **av, t_dimo *data)
 	str = get_next_line(fd);
 	data->width = (int)ft_strlen_without_nl(str);
 	if (!data->width)
-		ft_exit_w_message("ERROR, empty map");
+		ft_exit_w_message("ERROR");
 	while ((str != NULL))
 	{
 		data->height++;
